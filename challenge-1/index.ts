@@ -36,3 +36,25 @@ console.log(findHouses(JSON.stringify(houses),({name})=> name === 'Harkonnen'))
 console.log('===========FROM JSON FILE ===========')
 console.log(findHouses(JSON.stringify(houseFromJson),({name})=> name === 'Atreides'))
 console.log(findHouses(JSON.stringify(houseFromJson),({name})=> name === 'Harkonnen'))
+
+
+// Fibonacci series
+// 1 1 2 3 5 8 13 21 34 55 89 
+function fibo(n:number):number{
+  if(n <= 2) 
+    return 1
+  return fibo(n-1) + fibo(n-2)
+}
+
+function fibo2(n:number, memo:Record<string,number> = {}){
+  if(n<= 2)
+    return 1
+  if(memo && n in memo)
+    return memo[n];
+
+  memo[n] = fibo2(n-1,memo) + fibo2(n-2,memo)
+  return memo[n]
+}
+console.log('Recursion 1:',fibo(6));
+console.log('Recursion 2:',fibo2(50));
+
